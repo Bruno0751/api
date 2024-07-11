@@ -1,7 +1,7 @@
 import { db } from "../db.js";
 
 export const getUsers = (_, res) => {
-    const q = "SELECT * FROM tarefas;";
+    const q = "SELECT * FROM bd_appjs.tarefas;";
 
     db.query(q, (err, data) => {
         if (err) return res.json(err);
@@ -11,12 +11,12 @@ export const getUsers = (_, res) => {
 };
 
 export const addUser = (req, res) => {
-    const q = "INSERT INTO tarefas('tar_resp', 'tar_tarefa', 'tar_datafinal') VALUES (?)";
+    const q = "INSERT INTO bd_appjs.tarefas VALUES (NULL, ?, NOW());";
 
     const VALUES = [
-        req.body.resp,
-        req.body.tarefa,
-        req.body.datafinal,
+        req.body.tar_resp,
+        req.body.tar_tarefa,
+        // req.body.tar_datafinal,
     ];
 
     db.query(q, [VALUES], (err) => {
@@ -26,11 +26,11 @@ export const addUser = (req, res) => {
 };
 
 export const updateUser = (req, res) => {
-    const q = "UPDATE tarefas SET 'tar_resp' = ?, 'tar_tarefa' = ?, 'tar_datafinal' = ? WHERE 'tar_id' = ?";
+    const q = "UPDATE bd_appjs.tarefas SET tar_resp = ?, tar_tarefa = ?, tar_datafinal = ? where tar_id = ?"
     const VALUES = [
-        req.body.resp,
-        req.body.tarefa,
-        req.body.datafinal,
+        req.body.tar_resp,
+        req.body.tar_tarefa,
+        req.body.tar_datafinal,
     ];
 
     db.query(q, [...VALUES, req.params.tar_id], (err) => {
@@ -41,7 +41,7 @@ export const updateUser = (req, res) => {
 };
 
 export const deleteUser = (req, res) => {
-    const q = "DELETE FROM tarefas WHERE tar_id = ?";
+    const q = "DELETE FROM bd_appjs.tarefas WHERE tar_id = ?;";
 
     db.query(q, [req.params.tar_id], (err) => {
         if(err) return res.json(err);

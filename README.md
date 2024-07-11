@@ -5,7 +5,15 @@
 -----------------------------------------------------  
 # api
 
-## Project setup
-```
+## intalar dependencias
 npm install
-```
+
+## rodar em dev
+yarn run dev
+ou
+npm run dev
+
+## rodar em prd
+yarn run start
+ou
+npm run start
