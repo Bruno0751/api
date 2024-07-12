@@ -14,11 +14,10 @@
   },
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js",
-    "test": "cls"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["api", "node", "js"],
+  "author": "Bruno Gressler da Silveira",
   "license": "ISC",
-  "description": ""
+  "description": "projeto de api usando para estudos"
 }
